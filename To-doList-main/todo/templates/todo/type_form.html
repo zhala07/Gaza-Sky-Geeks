@@ -1,0 +1,20 @@
+{% extends "todo/base.html" %}
+{% block content %}
+
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <h4 class="mb-4 ">{{title}}</h4>
+            <form method="post" class="form-example">
+                {% csrf_token %}
+                {% comment %} {{ form.as_p }} {% endcomment %}
+
+                <input  type="text" name="title" class="form-control" placeholder="Title">                
+                <input value="Save" type="submit" class="btn btn-primary btn-customized mt-4" >
+                <input value="Cancel" type="button" class="btn btn-primary btn-customized mt-4" 
+                onclick="location.href='{% url "default" %}';">
+            </form>
+        </div>
+    </div>
+
+
+{%endblock%}

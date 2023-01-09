@@ -1,0 +1,18 @@
+{% extends "todo/base.html" %}
+{% block content %}
+<div class="row h-100 justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-6">
+        <form method="post">{% csrf_token %}
+            <p style="font-size:20px;">Are you sure you want to delete "{{ object }}" note?</p>
+            {{ form }}
+            <p style="float:left;"> 
+                <input value="Yes" type="submit" class="btn btn-primary">
+            </p>
+        </form>
+        <p style="float:right;">
+            <input value="Cancel" type="button"   class="btn btn-primary"
+                onclick="location.href='{% url 'type' List_details.id %}';">
+        </p>
+    </div>
+</div>
+{%endblock%}

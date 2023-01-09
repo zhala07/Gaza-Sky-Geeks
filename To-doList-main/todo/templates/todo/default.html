@@ -1,0 +1,35 @@
+{% extends "todo/base.html" %}
+{% block content %}
+
+
+<h3 class="mb-4 text-center">List Types</h3>
+   
+<div class="mb-2 text-center">
+    <a href='{% url 'type-add' %}' class="btn btn-primary">Add new type</a>
+</div>
+<div class="list-group" style="white-space:nowrap;">
+    <table width="100%" >
+        {% for todolist in object_list %}  
+        <tr>
+            <td width="90%">
+                <a href='{% url "type" todolist.id %}' class="list-group-item list-group-item-action flex-column align-items-start ">
+                        <div class="d-flex w-100 justify-content-between" >
+                            <h5 class="mb-1"> {{ todolist.title }}</h5>
+                            <small>{{todolist.created_date |timesince}} ago</small>
+                        </div>
+                </a> 
+            </td >
+            <td tyle="text-align: center; vertical-align: middle;"width="5%">
+                <input value="Delete" type="button" class="btn btn-primary" 
+                onclick="location.href= '{% url "type-delete" todolist.id %}'"  />
+    
+            </td>
+        {% empty %}
+            <td>
+                <p >There are no To-do List types.</p>
+            </td>
+        </tr>
+        {% endfor %}         
+    </table>
+</div>
+{%endblock%}
